@@ -103,16 +103,14 @@ const deleteTour = (req, res) => {
     });
   }
   
-app.get('/api/v1/tours/:id', getTour);
-app.patch('/api/v1/tours/:id', patchTour);
-app.delete('/api/v1/tours/:id', deleteTour);
-
+app.route('/api/v1/tours')
+.get(getAllTours)
+.post(createTour);
+  
 app.route('/api/v1/tours')
 .get(getTour)
 .patch(patchTour)
 .delete(deleteTour);
-
-app.route('/api/v1/tours/:id')
 
 
 app.listen(port, () => {
