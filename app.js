@@ -3,9 +3,12 @@ const express = require('express');
 require('dotenv').config();
 const port = process.env.port;
 const app = express();
+const morgan = require('morgan');
 
+// Middleware
+
+app.use(morgan('dev'));
 app.use(express.json());
-
 app.use((req , res , next) => {
   req.requestedAt = new Date().toISOString();
   next();
@@ -107,7 +110,9 @@ const deleteTour = (req, res) => {
       },
     });
   }
+
   
+  // Routes
 app.route('/api/v1/tours')
 .get(getAllTours)
 .post(createTour);
@@ -118,6 +123,7 @@ app.route('/api/v1/tours')
 .delete(deleteTour);
 
 
+// Start server
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
