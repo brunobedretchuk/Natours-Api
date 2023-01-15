@@ -6,8 +6,14 @@ const tourRouter = require('./routes/tourRoutes.js');
 const userRouter = require('./routes/userRoutes.js');
 
 // Middleware
+console.log(process.env.NODE_ENV);
 
-app.use(morgan('dev'));
+if(process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+
+}
+
+
 app.use(express.json());
 app.use((req, res, next) => {
   req.requestedAt = new Date().toISOString();
