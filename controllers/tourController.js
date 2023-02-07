@@ -18,7 +18,7 @@ exports.getAllTours = async (req, res) => {
   }
 };
 
-exports.getTour = (req, res) => {
+exports.getTour = async (req, res) => {
   try {
     const id = req.params.id;
     const tour = await Tour.findById(id);
@@ -80,7 +80,7 @@ exports.patchTour = async (req, res) => {
  
 };
 
-exports.deleteTour = (req, res) => {
+exports.deleteTour = async (req, res) => {
   try{
  
     const id = req.params.id * 1;
